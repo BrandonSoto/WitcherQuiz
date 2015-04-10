@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WitcherQuiz</string>
+
+    // QuizActivity Strings
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="next_button">Next</string>
+    <string name="prev_button">Prev</string>
+    <string name="menu_settings">Settings</string>
+
+    // Toast trings
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+
+    // The questions to ask
+    <string name="q_dandelion">Dandelion\'s Polish name is \"Jaskier\"</string>
+    <string name="q_vergen">Vergen is an elven town on the Aedirnian border</string>
+    <string name="q_nilfgaard">Most of Nilfgaard\'s expansion has been through conquest of foreign countries</string>
+    <string name="q_henselt">Henselt is heir to the Dynasty of the Unicorn</string>
+    <string name="q_love">Geralt\'s primary love interest is Triss Merigold</string>
+
+    // CheatActivity Strings
+    <string name="cheat_button">Cheat!</string>
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="judgment_toast">Cheating is wrong.</string>
+    <string name="incorrect_judgement_toast">You do not cheat very well. \nStick to guessing.</string>
+    <string name="title_activity_cheat">CheatActivity</string>
+
+    <string name="action_settings">Settings</string>
+
+</resources>
