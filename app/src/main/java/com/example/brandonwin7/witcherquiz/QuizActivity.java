@@ -3,7 +3,6 @@ package com.example.brandonwin7.witcherquiz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +35,19 @@ public class QuizActivity extends Activity {
 
     int mCurrentIndex = 0;
 
-    private void updateQuestion() {
+    private void updateQuestion(boolean increment) {
+        if (increment) {
+            mCurrentIndex++;
+        } else {
+            mCurrentIndex--;
+        }
+
+        if (mCurrentIndex < 0) {
+            mCurrentIndex = mAnswerKey.length - mCurrentIndex;
+        }
+
+        mCurrentIndex = mCurrentIndex % mAnswerKey.length;
+
         int question = mAnswerKey[mCurrentIndex].getQuestion();
         mImage.setImageResource(mAnswerKey[mCurrentIndex].getImageID());
         mQuestionTextView.setText(question);
@@ -85,6 +96,7 @@ public class QuizActivity extends Activity {
             @Override
             public void onClick(View v) {
                 checkAnswer(true);
+                updateQuestion(true);
             }
         });
 
@@ -93,6 +105,7 @@ public class QuizActivity extends Activity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+                updateQuestion(true);
             }
         });
 
@@ -100,9 +113,8 @@ public class QuizActivity extends Activity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mAnswerKey.length;
                 mIsCheater = false;
-                updateQuestion();
+                updateQuestion(true);
             }
         });
 
@@ -110,17 +122,8 @@ public class QuizActivity extends Activity {
         mPrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = mCurrentIndex - 1;
-                Log.d(TAG, "new index: " + mCurrentIndex);
-
-                if (mCurrentIndex < 0) {
-                    mCurrentIndex = mAnswerKey.length + mCurrentIndex;
-                }
-
-                mCurrentIndex = mCurrentIndex % mAnswerKey.length;
-
                 mIsCheater = false;
-                updateQuestion();
+                updateQuestion(false);
             }
         });
 
@@ -140,7 +143,7 @@ public class QuizActivity extends Activity {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
 
-        updateQuestion();
+        updateQuestion(true);
     }
 
     @Override
