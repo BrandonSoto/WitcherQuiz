@@ -3,39 +3,40 @@ package com.example.brandonwin7.witcherquiz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends Activity {
 
-    private static final String TAG = "QuizActivity";
+    private static final String TAG = QuizActivity.class.getSimpleName();
     private static final String KEY_INDEX = "index";
 
-    Button mTrueButton;
-    Button mFalseButton;
-    Button mNextButton;
-    Button mCheatButton;
+    // gui components
+    private Button mTrueButton;
+    private Button mFalseButton;
+    private Button mNextButton;
+    private Button mCheatButton;
+    private ImageView mImage;
+    private TextView mQuestionTextView;
 
-    boolean mIsCheater;
-
-    TextView mQuestionTextView;
-
-    TrueFalse[] mAnswerKey = new TrueFalse[] {
-            new TrueFalse(R.string.q_dandelion, true),
-            new TrueFalse(R.string.q_vergen, false),
-            new TrueFalse(R.string.q_nilfgaard, true),
-            new TrueFalse(R.string.q_henselt, true),
-            new TrueFalse(R.string.q_love, false)
+    private boolean mIsCheater;
+    private TrueFalse[] mAnswerKey = new TrueFalse[] {
+            new TrueFalse(R.string.q_dandelion, true, R.drawable.dandelion2),
+            new TrueFalse(R.string.q_vergen, false, R.drawable.vergen3),
+            new TrueFalse(R.string.q_nilfgaard, true, R.drawable.nilfgaard),
+            new TrueFalse(R.string.q_henselt, true, R.drawable.henselt2),
+            new TrueFalse(R.string.q_love, false, R.drawable.triss2)
     };
 
     int mCurrentIndex = 0;
 
     private void updateQuestion() {
         int question = mAnswerKey[mCurrentIndex].getQuestion();
+        mImage.setImageResource(mAnswerKey[mCurrentIndex].getImageID());
         mQuestionTextView.setText(question);
     }
 
@@ -65,12 +66,17 @@ public class QuizActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate() called");
         setContentView(R.layout.activity_quiz);
 
         mIsCheater = false;
 
         mQuestionTextView = (TextView)findViewById(R.id.question_text_view);
+
+        mImage = (ImageView)findViewById(R.id.question_image);
+        mImage.setImageResource(mAnswerKey[mCurrentIndex].getImageID());
+        mImage.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+
+
 
         mTrueButton = (Button)findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
