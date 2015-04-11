@@ -25,11 +25,11 @@ public class QuizActivity extends Activity {
 
     private boolean mIsCheater;
     private TrueFalse[] mAnswerKey = new TrueFalse[] {
-            new TrueFalse(R.string.q_dandelion, true, R.drawable.dandelion2),
-            new TrueFalse(R.string.q_vergen, false, R.drawable.vergen3),
+            new TrueFalse(R.string.q_dandelion, true, R.drawable.dandelion),
+            new TrueFalse(R.string.q_vergen, false, R.drawable.vergen),
             new TrueFalse(R.string.q_nilfgaard, true, R.drawable.nilfgaard),
-            new TrueFalse(R.string.q_henselt, true, R.drawable.henselt2),
-            new TrueFalse(R.string.q_love, false, R.drawable.triss2)
+            new TrueFalse(R.string.q_henselt, true, R.drawable.henselt),
+            new TrueFalse(R.string.q_love, false, R.drawable.triss)
     };
 
     int mCurrentIndex = 0;
