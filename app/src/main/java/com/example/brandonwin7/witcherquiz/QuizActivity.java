@@ -3,6 +3,7 @@ package com.example.brandonwin7.witcherquiz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ public class QuizActivity extends Activity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mPrevButton;
     private Button mCheatButton;
     private ImageView mImage;
     private TextView mQuestionTextView;
@@ -99,6 +101,24 @@ public class QuizActivity extends Activity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mAnswerKey.length;
+                mIsCheater = false;
+                updateQuestion();
+            }
+        });
+
+        mPrevButton = (Button)findViewById(R.id.prev_button);
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = mCurrentIndex - 1;
+                Log.d(TAG, "new index: " + mCurrentIndex);
+
+                if (mCurrentIndex < 0) {
+                    mCurrentIndex = mAnswerKey.length + mCurrentIndex;
+                }
+
+                mCurrentIndex = mCurrentIndex % mAnswerKey.length;
+
                 mIsCheater = false;
                 updateQuestion();
             }
