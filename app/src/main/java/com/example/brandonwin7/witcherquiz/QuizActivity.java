@@ -29,7 +29,7 @@ public class QuizActivity extends Activity {
             new TrueFalse(R.string.q_vergen, false, R.drawable.vergen),
             new TrueFalse(R.string.q_nilfgaard, true, R.drawable.nilfgaard),
             new TrueFalse(R.string.q_henselt, true, R.drawable.henselt),
-            new TrueFalse(R.string.q_love, false, R.drawable.triss)
+            new TrueFalse(R.string.q_love, false, R.drawable.triss_img)
     };
 
     int mCurrentIndex = 0;
